@@ -3,7 +3,8 @@
 #include "merge_sort.h"
 #include "heap_sort.h"
 
-void print_v(std::vector<int> v) {
+template <typename T>
+void print_v(std::vector<T> v) {
     for (auto &elem : v) {
         std::cout << elem << ' ';
     }

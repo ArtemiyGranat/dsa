@@ -1,8 +1,10 @@
+#pragma once
 #include <vector>
 #include <algorithm>
 
-int partition(std::vector<int>& v, int l, int r) {
-    int pivot = v[l + (r - l) / 2];
+template <typename T>
+int partition(std::vector<T>& v, int l, int r) {
+    T pivot = v[l + (r - l) / 2];
     int i = l;
     int j = r;
     while (i <= j) {
@@ -20,7 +22,8 @@ int partition(std::vector<int>& v, int l, int r) {
     return j;
 }
 
-void quick_sort(std::vector<int>& v, int l, int r) {
+template <typename T>
+void quick_sort(std::vector<T>& v, int l, int r) {
     if (l < r) {
         int pivot = partition(v, l, r);
         quick_sort(v, l, pivot);

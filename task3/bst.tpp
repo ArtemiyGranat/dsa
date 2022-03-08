@@ -1,14 +1,14 @@
 // BST node constructors
 
 template <typename T>
-BstNode<T>::BstNode(const T &key, BstNode<T>* left, BstNode<T>* right) {
+Node<T>::Node(const T &key, Node<T>* left, Node<T>* right) {
     this->key = key;
     this->left = left;
     this->right = right;
 }
 
 template <typename T>
-BstNode<T>::BstNode(const BstNode<T>*& node) {
+Node<T>::Node(const Node<T>*& node) {
     this->key = node->key;
     this->left = node->left;
     this->right = node->right;
@@ -39,21 +39,19 @@ void Bst<T>::find(const T& key) {
 }
 
 template <typename T>
-BstNode<T>* Bst<T>::insert_internal(const T& key, BstNode<T>*& current) {
+Node<T>* Bst<T>::insert_internal(const T& key, Node<T>*& current) {
     if (current == nullptr) {
-        current = new BstNode<T>(key);
-    }
-    else if (key < current->key) {
+        current = new Node<T>(key);
+    } else if (key < current->key) {
         current->left = insert_internal(key, current->left);
-    }
-    else {
+    } else {
         current->right = insert_internal(key, current->right);
     }
     return current;
 }
 
 template <typename T>
-BstNode<T>* Bst<T>::min_key_node(BstNode<T>* current) {
+Node<T>* Bst<T>::next_node(Node<T>* current) {
     while (current->left != nullptr) {
         current = current->left;
     }
@@ -61,40 +59,36 @@ BstNode<T>* Bst<T>::min_key_node(BstNode<T>* current) {
 }
 
 template <typename T>
-BstNode<T>* Bst<T>::remove_internal(const T& key, BstNode<T>*& current) {
+Node<T>* Bst<T>::remove_internal(const T& key, Node<T>*& current) {
     if (current == nullptr) {
         return nullptr;
     }
-    BstNode<T>* tmp;
+    Node<T>* node;
     if (key < current->key) {
         current->left = remove_internal(key, current->left);
-    }
-    else if (key > current->key) {
+    } else if (key > current->key) {
         current->right = remove_internal(key, current->right);
-    }
-    else {
+    } else {
         if (current->left == nullptr && current->right == nullptr) {
             return nullptr;
-        }
-        else if (current->left == nullptr) {
-            tmp = current->right;
+        } else if (current->left == nullptr) {
+            node = current->right;
             free(current);
-            return tmp;
-        }
-        else if (current->right == nullptr) {
-            tmp = current->left;
+            return node;
+        } else if (current->right == nullptr) {
+            node = current->left;
             free(current);
-            return tmp;
+            return node;
         }
-        tmp = min_key_node(current->right);
-        current->key = tmp->key;
-        current->right = remove_internal(tmp->key, current->right);
+        node = next_node(current->right);
+        current->key = node->key;
+        current->right = remove_internal(node->key, current->right);
     }
     return current;
 }
 
 template <typename T>
-BstNode<T>* Bst<T>::find_internal(const T& key, BstNode<T>*& current) {
+Node<T>* Bst<T>::find_internal(const T& key, Node<T>*& current) {
     if (current == nullptr || current->key == key) {
         return current;
     }
@@ -122,7 +116,7 @@ void Bst<T>::postorder_traversal() {
 }
 
 template <typename T>
-void Bst<T>::inorder_internal(BstNode<T>* current) {
+void Bst<T>::inorder_internal(Node<T>* current) {
     if (current == nullptr) {
         return;
     }
@@ -132,7 +126,7 @@ void Bst<T>::inorder_internal(BstNode<T>* current) {
 }
 
 template <typename T>
-void Bst<T>::preorder_internal(BstNode<T>* current) {
+void Bst<T>::preorder_internal(Node<T>* current) {
     if (current == nullptr) {
         return;
     }
@@ -142,7 +136,7 @@ void Bst<T>::preorder_internal(BstNode<T>* current) {
 }
 
 template <typename T>
-void Bst<T>::postorder_internal(BstNode<T>* current) {
+void Bst<T>::postorder_internal(Node<T>* current) {
     if (current == nullptr) {
         return;
     }

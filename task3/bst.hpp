@@ -2,14 +2,14 @@
 #include <iostream>
 
 template <typename T>
-struct BstNode { // binary search tree node
+struct Node { // binary search tree node
     T key;
-    BstNode<T> *left, *right; // left and right child of node
+    Node<T> *left, *right; // left and right child of node
 
-    BstNode() = default;
-    BstNode(const T &key, BstNode<T>* left = nullptr, BstNode<T>* right = nullptr);
-    BstNode(const BstNode<T>*& node);
-    ~BstNode() = default;
+    Node() = default;
+    Node(const T &key, Node<T>* left = nullptr, Node<T>* right = nullptr);
+    Node(const Node<T>*& node);
+    ~Node() = default;
 };
 
 template <typename T>
@@ -25,14 +25,14 @@ public:
     void preorder_traversal();
     void postorder_traversal();
 private:
-    BstNode<T>* root;
-    BstNode<T>* min_key_node(BstNode<T>* current);
-    BstNode<T>* insert_internal(const T& key, BstNode<T>*& current);
-    BstNode<T>* remove_internal(const T& key, BstNode<T>*& current);
-    BstNode<T>* find_internal(const T& key, BstNode<T>*& current);
-    void inorder_internal(BstNode<T>* current);
-    void preorder_internal(BstNode<T>* current);
-    void postorder_internal(BstNode<T>* current);
+    Node<T>* root;
+    Node<T>* next_node(Node<T>* current);
+    Node<T>* insert_internal(const T& key, Node<T>*& current);
+    Node<T>* remove_internal(const T& key, Node<T>*& current);
+    Node<T>* find_internal(const T& key, Node<T>*& current);
+    void inorder_internal(Node<T>* current);
+    void preorder_internal(Node<T>* current);
+    void postorder_internal(Node<T>* current);
 };
 
 #include "bst.tpp"

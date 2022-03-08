@@ -1,8 +1,10 @@
+#pragma once
 #include <vector>
 #include <algorithm>
 
-void merge(std::vector<int>& v, int l, int mid, int r) {
-    std::vector<int> l_v(mid - l + 1), m_v(r - mid);
+template <typename T>
+void merge(std::vector<T>& v, int l, int mid, int r) {
+    std::vector<T> l_v(mid - l + 1), m_v(r - mid);
     for (int i = 0; i < l_v.size(); i++) {
         l_v[i] = v[l + i];
     }
@@ -14,8 +16,7 @@ void merge(std::vector<int>& v, int l, int mid, int r) {
         if (l_v[i] <= m_v[j]) {
             v[k] = l_v[i];
             i++;
-        }
-        else {
+        } else {
             v[k] = m_v[j];
             j++;
         }
@@ -33,7 +34,8 @@ void merge(std::vector<int>& v, int l, int mid, int r) {
     }
 }
 
-void merge_sort(std::vector<int>& v, int l, int r) {
+template <typename T>
+void merge_sort(std::vector<T>& v, int l, int r) {
     if (l < r) {
         int mid = l + (r - l) / 2;
         merge_sort(v, l, mid);

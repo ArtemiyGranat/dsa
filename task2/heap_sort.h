@@ -1,7 +1,9 @@
+#pragma once
 #include <vector>
 #include <algorithm>
 
-void heapify(std::vector<int>& v, int n, int i) {
+template <typename T>
+void heapify(std::vector<T>& v, int n, int i) {
     int max = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
@@ -17,7 +19,8 @@ void heapify(std::vector<int>& v, int n, int i) {
     }
 }
 
-void heap_sort(std::vector<int>& v, int n) {
+template <typename T>
+void heap_sort(std::vector<T>& v, int n) {
     for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(v, n, i);
     }
