@@ -212,6 +212,7 @@ void RbTree<T>::remove_fixup(Node<T>* node) {
             sibling->color = RED;
             remove_fixup(parent);
             parent->color = BLACK;
+            return;
         } else if (right_nephew->color == BLACK) {
             left_nephew->color == BLACK;
             sibling->color = RED;
@@ -237,6 +238,7 @@ void RbTree<T>::remove_fixup(Node<T>* node) {
             sibling->color = RED;
             remove_fixup(parent);
             parent->color = BLACK;
+            return;
         } else if (left_nephew->color == BLACK) {
             right_nephew->color == BLACK;
             sibling->color = RED;

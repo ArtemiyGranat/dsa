@@ -29,7 +29,11 @@ int main() {
     }
     std::cout << "Traversals after removing some elements: \n";
     std::cout << "Preorder traversal: \n";
+    rbt.inorder_traversal();
+    std::cout << '\n';
     rbt.preorder_traversal();
+    std::cout << '\n';
+    rbt.postorder_traversal();
 }
 
 /*
