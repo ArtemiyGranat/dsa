@@ -1,3 +1,4 @@
+#pragma once
 #include "string_funcs.h"
 
 std::vector<int> kmp(const std::string& s, const std::string& pattern) {
