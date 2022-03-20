@@ -6,7 +6,9 @@ int main() {
     std::vector<int> indices;
     
     std::cout << "Enter the string and pattern: ";
-    std::cin >> s >> pattern;
+    getline(std::cin, s);
+    getline(std::cin, pattern);
+    
     indices = rabin_karp(s, pattern);
     if (indices.size() != 0) {
         std::cout << "Pattern found at indices: ";

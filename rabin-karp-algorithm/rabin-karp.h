@@ -29,7 +29,7 @@ long long polynomial_hash(const std::string& s, int i) {
 std::vector<int> rabin_karp(const std::string& s, const std::string& pattern) {
     int m = pattern.size(), n = s.size();
     long long p_power = pow(p_power, m);
-    std::vector<long long> precalc(n);
+    std::vector<long long> precalc(n, 0);
     for (int i = 0; i < n; i++) {
         precalc[i] = polynomial_hash(s, i);
     }

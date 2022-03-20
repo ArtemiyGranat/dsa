@@ -4,11 +4,12 @@
 #include "heap_sort.h"
 
 template <typename T>
-void print_v(std::vector<T> v) {
+std::ostream& operator<<(std::ostream& out, const std::vector<T>& v) {
     for (auto &elem : v) {
-        std::cout << elem << ' ';
+        out << elem << ' ';
     }
-    std::cout << '\n';
+    out << '\n';
+    return out;
 }
 
 int main() {
@@ -20,17 +21,14 @@ int main() {
     for (auto &elem : v) {
         std::cin >> elem;
     }
-    std::vector<int> quick_test = v, merge_test = v, heap_test = v;
 
+    std::vector<int> quick_test = v, merge_test = v, heap_test = v;
     quick_sort(quick_test, 0, v.size() - 1);
-    std::cout << "Vector after quick sort: ";
-    print_v(quick_test);
+    std::cout << "Vector after quick sort: " << quick_test;
 
     merge_sort(merge_test, 0, v.size() - 1);
-    std::cout << "Vector after merge sort: ";
-    print_v(merge_test);
+    std::cout << "Vector after merge sort: " << merge_test;
 
     heap_sort(heap_test, v.size());
-    std::cout << "Vector after heap sort: ";
-    print_v(heap_test);
+    std::cout << "Vector after heap sort: " << heap_test;
 }
