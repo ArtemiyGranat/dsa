@@ -185,8 +185,8 @@ Node<T>* RbTree<T>::find(const T& key, Node<T>*& current) {
 
 template <typename T>
 Node<T>* RbTree<T>::next_node(Node<T>* current) {
-    while (current->right != nil) {
-        current = current->right;
+    while (current->left != nil) {
+        current = current->left;
     }
     return current;
 }
@@ -296,7 +296,7 @@ void RbTree<T>::remove_internal(Node<T>*& node) {
         remove_fixup(children);
         children->color = BLACK;
     } else {
-        Node<T>* next = next_node(node->left);
+        Node<T>* next = next_node(node->right);
         node->key = next->key;
         remove_internal(next);
         return;
