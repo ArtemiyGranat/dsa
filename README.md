@@ -2,7 +2,7 @@
 ## Main tasks
 1. Sorts
     * Counting and Radix sorts
-    * Quick, Merge and Heap sorts
+    * Quick, Merge and Heap sorts with time comparison
 2. Data structures
     * Binary Search Tree
     * Red Black Tree
