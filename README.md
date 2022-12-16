@@ -1,4 +1,4 @@
-# Data Structures and Algorithms course at Saratov State University, 3rd semester
+# Data Structures and Algorithms course at Saratov State University, 4th semester
 ## Main tasks
 1. Sorts
     * Counting and Radix sorts
